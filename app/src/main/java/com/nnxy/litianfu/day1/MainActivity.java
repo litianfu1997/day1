@@ -3,7 +3,6 @@ package com.nnxy.litianfu.day1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,10 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
                 //从MainActivity跳转到Login_Activity
                 Intent intent =new Intent(MainActivity.this,Login_Activity.class);
+                //实例化Bundle对象用来装数据
+                Bundle bundle =new Bundle();
+                //将数据以键值对的形式存入Bundle对象
+                bundle.putString("user",username.getText().toString());
+                bundle.putString("pwd",password.getText().toString());
+                //将Bundle对象传递给Intent
+                intent.putExtras(bundle);
+                //启动另一个Activity页面
                 startActivity(intent);
-                String user = username.getText().toString();
-                String pwd = password.getText().toString();
-                Toast.makeText(getApplicationContext(),"用户名："+user+"密码："+pwd,Toast.LENGTH_LONG).show();
+//                String user = username.getText().toString();
+//                String pwd = password.getText().toString();
+//                Toast.makeText(getApplicationContext(),"用户名："+user+"密码："+pwd,Toast.LENGTH_LONG).show();
 
 
             }
