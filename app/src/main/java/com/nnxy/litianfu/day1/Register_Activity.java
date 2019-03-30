@@ -19,7 +19,6 @@ public class Register_Activity extends AppCompatActivity {
     private EditText pwd,rpwd;
     private User zc_user;
     private UserUtils userUtils_reg;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +46,7 @@ public class Register_Activity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "用户名不能为空！", Toast.LENGTH_LONG).show();
                 } else if(pwd.getText().toString()==null||pwd.getText().toString().equals(""))   {
                     Toast.makeText(getApplicationContext(), "密码不能为空！", Toast.LENGTH_LONG).show();
-                }
-
-
-                else {
+                } else {
                     if (userUtils_reg.insertUser(zc_user)) {
                         Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Register_Activity.this, MainActivity.class);
