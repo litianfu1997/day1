@@ -6,7 +6,7 @@ package com.nnxy.entity;
  */
 public class User {
 
-    private Long id;
+    private Long user_id;
     /** Not-null value. */
     private String username;
     /** Not-null value. */
@@ -15,31 +15,22 @@ public class User {
     public User() {
     }
 
-    public User(Long id) {
-        this.id = id;
+    public User(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public User(Long id, String username, String password) {
-        this.id = id;
+    public User(Long user_id, String username, String password) {
+        this.user_id = user_id;
         this.username = username;
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     /** Not-null value. */
@@ -61,7 +52,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
 }

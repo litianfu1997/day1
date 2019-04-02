@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.nnxy.funactivity.AddAccount_Activity;
+import com.nnxy.funactivity.deleteAccount_Activity;
 
 public class Login_Activity extends AppCompatActivity {
 
@@ -32,7 +33,8 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void deleteAccount(View view){
-
+        Intent intent =new Intent(Login_Activity.this,deleteAccount_Activity.class);
+        startActivity(intent);
     }
 
     /***

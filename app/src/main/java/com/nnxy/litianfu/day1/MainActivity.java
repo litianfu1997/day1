@@ -1,11 +1,8 @@
 package com.nnxy.litianfu.day1;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,10 +10,8 @@ import android.widget.Toast;
 
 
 import com.nnxy.application.MyApplication;
-import com.nnxy.dbmanager.UserUtils;
+import com.nnxy.dbmanager.CommomUtils;
 import com.nnxy.entity.User;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //1.声明组件
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_Register;
     private EditText username;
     private EditText password;
-    private UserUtils userUtils;
+    private CommomUtils userUtils;
     private User user;
 
     @Override
@@ -35,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        userUtils=MyApplication.getUserUtils();
+        userUtils=MyApplication.getCommomUtils();
       //  Log.i("MainActivity","context is "+MainActivity.this.toString());
 
         //2.找到布局的button控件
@@ -52,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         String pwd =password.getText().toString().trim();
         if (!(userUtils.queryUser(user).isEmpty())){//先判断用户存在
             if (!(userUtils.queryUser(user,pwd).isEmpty())){//密码正确
+
+                //
+                MyApplication.setUserId(userUtils.queryUserId(user).get(0).getUser_id());
+
+
                 Intent intent =new Intent(MainActivity.this,Login_Activity.class);
                 Toast.makeText(getApplicationContext(),"登陆成功！",Toast.LENGTH_LONG).show();
                 startActivity(intent);

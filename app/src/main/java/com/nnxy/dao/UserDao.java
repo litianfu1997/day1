@@ -23,7 +23,7 @@ public class UserDao extends AbstractDao<User, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property User_id = new Property(0, Long.class, "user_id", true, "USER_ID");
         public final static Property Username = new Property(1, String.class, "username", false, "USERNAME");
         public final static Property Password = new Property(2, String.class, "password", false, "PASSWORD");
     };
@@ -41,7 +41,7 @@ public class UserDao extends AbstractDao<User, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"USER_ID\" INTEGER PRIMARY KEY ," + // 0: user_id
                 "\"USERNAME\" TEXT NOT NULL ," + // 1: username
                 "\"PASSWORD\" TEXT NOT NULL );"); // 2: password
     }
@@ -57,9 +57,9 @@ public class UserDao extends AbstractDao<User, Long> {
     protected void bindValues(SQLiteStatement stmt, User entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        Long user_id = entity.getUser_id();
+        if (user_id != null) {
+            stmt.bindLong(1, user_id);
         }
         stmt.bindString(2, entity.getUsername());
         stmt.bindString(3, entity.getPassword());
@@ -75,7 +75,7 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public User readEntity(Cursor cursor, int offset) {
         User entity = new User( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // user_id
             cursor.getString(offset + 1), // username
             cursor.getString(offset + 2) // password
         );
@@ -85,7 +85,7 @@ public class UserDao extends AbstractDao<User, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, User entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setUser_id(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUsername(cursor.getString(offset + 1));
         entity.setPassword(cursor.getString(offset + 2));
      }
@@ -93,7 +93,7 @@ public class UserDao extends AbstractDao<User, Long> {
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(User entity, long rowId) {
-        entity.setId(rowId);
+        entity.setUser_id(rowId);
         return rowId;
     }
     
@@ -101,7 +101,7 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public Long getKey(User entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getUser_id();
         } else {
             return null;
         }

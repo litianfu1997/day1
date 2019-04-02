@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nnxy.application.MyApplication;
-import com.nnxy.dbmanager.UserUtils;
+import com.nnxy.dbmanager.CommomUtils;
 import com.nnxy.entity.User;
 
 public class Register_Activity extends AppCompatActivity {
@@ -19,14 +19,14 @@ public class Register_Activity extends AppCompatActivity {
     private TextView textView;
     private EditText pwd,rpwd;
     private User zc_user;
-    private UserUtils registerUser;
+    private CommomUtils registerUser;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_);
-        registerUser=MyApplication.getUserUtils();
+        registerUser=MyApplication.getCommomUtils();
         //Log.i("MainActivity","context is _______>>>> "+Register_Activity.this);
         button=findViewById(R.id.btn_Register_1);
         pwd=findViewById(R.id.Reg_mima);

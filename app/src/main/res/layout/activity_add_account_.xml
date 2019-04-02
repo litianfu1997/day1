@@ -28,6 +28,7 @@
             android:textSize="24sp" />
 
         <EditText
+            android:id="@+id/acc_money"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
@@ -49,6 +50,7 @@
             android:textSize="24sp" />
 
         <EditText
+            android:id="@+id/acc_date"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
@@ -95,6 +97,7 @@
             android:textSize="24sp" />
 
         <EditText
+            android:id="@+id/acc_address"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
@@ -116,6 +119,7 @@
             android:textSize="24sp" />
 
         <EditText
+            android:id="@+id/acc_note"
             android:layout_width="fill_parent"
             android:layout_height="103dp"
             android:height="100dp"
@@ -151,6 +155,7 @@
             android:layout_margin="10dp"
             android:layout_toLeftOf="@+id/btn_inqx"
             android:background="@android:color/darker_gray"
+            android:onClick="insertAccount"
             android:text="保存"
             android:textSize="20sp" />
 
