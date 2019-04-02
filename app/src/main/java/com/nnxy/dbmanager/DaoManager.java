@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.nnxy.dao.DaoMaster;
 import com.nnxy.dao.DaoSession;
+import com.nnxy.litianfu.day1.MainActivity;
 
 import de.greenrobot.dao.query.QueryBuilder;
 

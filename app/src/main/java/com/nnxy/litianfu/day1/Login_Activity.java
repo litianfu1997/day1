@@ -7,31 +7,81 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nnxy.funactivity.AddAccount_Activity;
+
 public class Login_Activity extends AppCompatActivity {
-    private Button btn_1;
-    private TextView txt_1,txt_2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_);
-//        btn_1=findViewById(R.id.button);
-//        txt_1=findViewById(R.id.textView_1);
-//        txt_2=findViewById(R.id.textView_2);
-//
-//        //获得Intent中的Bundle对象
-//        Bundle bundle = this.getIntent().getExtras();
-//        //获得Bundle对象中的数据
-//        String user=bundle.getString("user");
-//        String pwd=bundle.getString("pwd");
-//        txt_1.setText(user);
-//        txt_2.setText(pwd);
-//        btn_1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        setContentView(R.layout.activity_menu);
+
 
     }
+    /***
+     * 添加账务按钮
+     * @param view
+     */
+    public void addAccount(View view){
+        Intent intent =new Intent(Login_Activity.this,AddAccount_Activity.class);
+        startActivity(intent);
+    }
+
+    /***
+     * 删除账务按钮
+     * @param view
+     */
+    public void deleteAccount(View view){
+
+    }
+
+    /***
+     * 更新账务按钮
+     * @param view
+     */
+    public void updateAccount(View view){
+
+    }
+
+    /***
+     * 查找账务按钮
+     * @param view
+     */
+    public void selectAccount(View view){
+
+    }
+
+    /***
+     * 账务统计按钮
+     * @param view
+     */
+    public void accountStatistics(View view){
+
+    }
+
+    /***
+     * 用户管理按钮
+     * @param view
+     */
+    public void userManager(View view){
+
+    }
+
+    /***
+     * 系统设置按钮
+     * @param view
+     */
+    public void systemSetting(View view){
+
+    }
+
+    /***
+     * 注销按钮
+     * @param view
+     */
+    public void logOut(View view){
+
+    }
+
+
 }

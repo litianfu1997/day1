@@ -75,6 +75,7 @@
             android:id="@+id/btn_Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="Login_Fun"
             android:text="登录"
             />
 
@@ -82,6 +83,7 @@
             android:id="@+id/btn_Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="Intent_reg"
             android:text="注册" />
     </LinearLayout>
 

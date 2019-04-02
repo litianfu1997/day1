@@ -12,9 +12,18 @@ import de.greenrobot.dao.query.QueryBuilder;
 
 public class UserUtils {
     private  DaoManager manager;
+
+
     public UserUtils(Context context){
-        manager=DaoManager.getInstance();
-        manager.init(context);
+        this.manager=DaoManager.getInstance();
+        this.manager.init(context);
+    }
+
+    /***
+     * 关闭数据库
+     */
+    public void close(){
+        manager.claoseConnection();
     }
 
     /**
