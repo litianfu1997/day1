@@ -3,6 +3,7 @@ package com.nnxy.dbmanager;
 import android.content.Context;
 
 
+import com.nnxy.dao.AccountDao;
 import com.nnxy.dao.UserDao;
 import com.nnxy.entity.Account;
 import com.nnxy.entity.User;
@@ -49,11 +50,29 @@ public class CommomUtils {
     }
 
     /***
-     * 查询
+     * 更新用户
+     * @param user
+     * @return
+     */
+
+    public void updateUser(User user){
+        manager.getDaoSession().update(user);
+    }
+
+    /***
+     * 查询用户
      * @return
      */
     public List<User> queryAllUser(){//查询全部
         return manager.getDaoSession().loadAll(User.class);
+    }
+
+    public List<User> queryUser(long id){
+        return  manager.getDaoSession().queryBuilder(User.class).where(UserDao.Properties.User_id.eq(id)).list();
+    }
+
+    public String queryById4Password(long key){
+        return  manager.getDaoSession().load(User.class,key).getPassword();
     }
     public List<User> queryUser(String username){
         return  manager.getDaoSession().queryBuilder(User.class).where(UserDao.Properties.Username.eq(username)).list();
@@ -67,4 +86,14 @@ public class CommomUtils {
         queryBuilder.where(UserDao.Properties.Username.eq(username),UserDao.Properties.Password.eq(password));
         return  queryBuilder.list();
     }
+    /**
+     * 查询账务
+     */
+    public List<Account> queryAllAccount(long id){
+        return manager.getDaoSession().queryBuilder(Account.class).where(AccountDao.Properties.User_id.eq(id)).list();
+    }
+
+
+
+
 }

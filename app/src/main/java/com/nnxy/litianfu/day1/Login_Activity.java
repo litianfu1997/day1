@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.nnxy.funactivity.AddAccount_Activity;
+import com.nnxy.funactivity.SelectAccount_Activity;
+import com.nnxy.funactivity.SystemSetting_Activity;
 import com.nnxy.funactivity.deleteAccount_Activity;
 
 public class Login_Activity extends AppCompatActivity {
@@ -50,7 +52,8 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void selectAccount(View view){
-
+        Intent intent =new Intent(Login_Activity.this,SelectAccount_Activity.class);
+        startActivity(intent);
     }
 
     /***
@@ -74,7 +77,8 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void systemSetting(View view){
-
+        Intent intent =new Intent(Login_Activity.this,SystemSetting_Activity.class);
+        startActivity(intent);
     }
 
     /***
@@ -82,7 +86,7 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void logOut(View view){
-
+        finish();
     }
 
 

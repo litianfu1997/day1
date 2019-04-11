@@ -1,11 +1,15 @@
 package com.nnxy.funactivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -15,9 +19,13 @@ import com.nnxy.dbmanager.CommomUtils;
 import com.nnxy.entity.Account;
 import com.nnxy.litianfu.day1.R;
 
+import java.util.Calendar;
+
 
 public class AddAccount_Activity extends AppCompatActivity {
     private Account account;
+    private Calendar calendar;
+    private int mYear,mMonth,mDay;
 
 
     private Spinner output_LeiBie = null;
@@ -35,6 +43,7 @@ public class AddAccount_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account_);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.output_LeiBie =  super.findViewById(R.id.zhangwu_leibie);
         this.leiBie =  super.findViewById(R.id.leibie);
         this.output_LeiBie.setOnItemSelectedListener(new OnItemSelectedListenerImp());
@@ -45,6 +54,26 @@ public class AddAccount_Activity extends AppCompatActivity {
         date=findViewById(R.id.acc_date);
         address=findViewById(R.id.acc_address);
         note=findViewById(R.id.acc_note);
+
+        calendar=Calendar.getInstance();
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //日历控件
+                new DatePickerDialog(AddAccount_Activity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        mYear = year;
+                        mMonth = month;
+                        mDay = day;
+                        date.setText(new StringBuilder()
+                        .append(mYear).append("-").append((mMonth+1) < 10 ? "0"+(mMonth+1):(mMonth+1)).append("-").append((mDay<10)?"0"+mDay:mDay));
+                    }
+                },calendar.get(Calendar.YEAR)
+                  ,calendar.get(Calendar.MONTH)
+                ,calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
     }
     public void insertAccount(View view) {
         account = new Account();
@@ -57,6 +86,7 @@ public class AddAccount_Activity extends AppCompatActivity {
         account.setNote(note.getText().toString());
 
         if (accountUtils.insertAccount(account)){//插入账务
+
             Toast.makeText(getApplicationContext(),"插入成功",Toast.LENGTH_LONG).show();
         }else {
             Toast.makeText(getApplicationContext(),"插入失败",Toast.LENGTH_LONG).show();
