@@ -22,7 +22,8 @@
         <activity android:name="com.nnxy.funactivity.AddAccount_Activity" />
         <activity android:name="com.nnxy.funactivity.deleteAccount_Activity" />
         <activity android:name="com.nnxy.funactivity.SystemSetting_Activity" />
-        <activity android:name="com.nnxy.funactivity.SelectAccount_Activity"></activity>
+        <activity android:name="com.nnxy.funactivity.SelectAccount_Activity" />
+        <activity android:name="com.nnxy.funactivity.userManager_Activity"></activity>
     </application>
 
 </manifest>

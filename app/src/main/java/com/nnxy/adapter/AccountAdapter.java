@@ -28,6 +28,7 @@ public class AccountAdapter extends ArrayAdapter {
         View view = LayoutInflater.from(getContext()).inflate(resourceId,null);
 
         //2.通过id，获取textView
+        TextView id = view.findViewById(R.id.zhangwuID);
         TextView shiJianTv = view.findViewById(R.id.shijian);
         TextView diDianTv = view.findViewById(R.id.didian);
         TextView jinETv = view.findViewById(R.id.jine);
@@ -36,6 +37,7 @@ public class AccountAdapter extends ArrayAdapter {
         TextView beiZhuTv = view.findViewById(R.id.beizhu);
 
         //3.设置你要填入的信息
+        id.setText(account.getAcc_id().toString());
         shiJianTv.setText(account.getDate());
         diDianTv.setText(account.getAddress());
         jinETv.setText(Double.toString(account.getMoney()));

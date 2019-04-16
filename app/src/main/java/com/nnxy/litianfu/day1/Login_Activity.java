@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nnxy.application.MyApplication;
 import com.nnxy.funactivity.AddAccount_Activity;
 import com.nnxy.funactivity.SelectAccount_Activity;
 import com.nnxy.funactivity.SystemSetting_Activity;
 import com.nnxy.funactivity.deleteAccount_Activity;
+import com.nnxy.funactivity.userManager_Activity;
 
 public class Login_Activity extends AppCompatActivity {
 
@@ -44,7 +47,7 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void updateAccount(View view){
-
+        Toast.makeText(getApplicationContext(),"此功能正在开发中！",Toast.LENGTH_LONG).show();
     }
 
     /***
@@ -61,6 +64,7 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void accountStatistics(View view){
+        Toast.makeText(getApplicationContext(),"此功能正在开发中！",Toast.LENGTH_LONG).show();
 
     }
 
@@ -69,6 +73,11 @@ public class Login_Activity extends AppCompatActivity {
      * @param view
      */
     public void userManager(View view){
+        if (MyApplication.getUserId() == 1){
+            startActivity(new Intent(Login_Activity.this,userManager_Activity.class));
+        }else {
+            Toast.makeText(getApplicationContext(),"只有超级用户才能执行此功能！",Toast.LENGTH_LONG).show();
+        }
 
     }
 

@@ -6,9 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-        <CheckBox
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/zhangwuID"
+            android:layout_marginRight="10dp"
+
+            android:text="1"/>
 
         <TextView
             android:id="@+id/shijian"
@@ -16,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="2019-10-10"
+
             android:textAlignment="center" />
 
         <TextView
@@ -54,6 +59,7 @@
             android:id="@+id/beizhu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:text="123"
             android:textAlignment="center" />
 

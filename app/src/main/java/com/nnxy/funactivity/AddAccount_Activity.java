@@ -84,13 +84,23 @@ public class AddAccount_Activity extends AppCompatActivity {
         account.setZw_leibie(output_LeiBie.getSelectedItem().toString());
         account.setLeibie(leiBie.getSelectedItem().toString());
         account.setNote(note.getText().toString());
-
-        if (accountUtils.insertAccount(account)){//插入账务
-
-            Toast.makeText(getApplicationContext(),"插入成功",Toast.LENGTH_LONG).show();
+        if (money.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"金额不能为空",Toast.LENGTH_LONG).show();
+        }else if (date.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"日期不能为空",Toast.LENGTH_LONG).show();
+        }else if (address.getText().toString().trim().equals("")){
+            Toast.makeText(getApplicationContext(),"地址不能为空",Toast.LENGTH_LONG).show();
         }else {
-            Toast.makeText(getApplicationContext(),"插入失败",Toast.LENGTH_LONG).show();
+            if (accountUtils.insertAccount(account)){//插入账务
+
+                Toast.makeText(getApplicationContext(),"插入成功",Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(getApplicationContext(),"插入失败",Toast.LENGTH_LONG).show();
+            }
         }
+
+
+
 
     }
 

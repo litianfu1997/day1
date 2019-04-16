@@ -38,6 +38,7 @@ public class CommomUtils {
         return flag;
 
     }
+
     /**
      * 增加账务
      * */
@@ -59,6 +60,13 @@ public class CommomUtils {
         manager.getDaoSession().update(user);
     }
 
+    /**
+     * 删除用户
+     * @param id
+     */
+    public void deleteUser(long id){
+        manager.getDaoSession().getUserDao().deleteByKey(id);
+    }
     /***
      * 查询用户
      * @return
@@ -93,6 +101,12 @@ public class CommomUtils {
         return manager.getDaoSession().queryBuilder(Account.class).where(AccountDao.Properties.User_id.eq(id)).list();
     }
 
+    /**
+     * 删除账务
+     */
+    public void deleteAccount(long id){
+        manager.getDaoSession().getAccountDao().deleteByKey(id);
+    }
 
 
 
