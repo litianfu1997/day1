@@ -1,12 +1,16 @@
 package com.nnxy.funactivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nnxy.adapter.AccountAdapter;
@@ -23,6 +27,7 @@ public class deleteAccount_Activity extends AppCompatActivity {
     private ListView listView;
     private EditText editText;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +42,27 @@ public class deleteAccount_Activity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                    new AlertDialog.Builder(deleteAccount_Activity.this).
+                    setTitle("您确定删除吗？").
+                    setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                             Account account = (Account) listView.getItemAtPosition(position);
+                             long id1 = account.getAcc_id();
+                            commomUtils.deleteAccount(id1);
+                            Toast.makeText(getApplicationContext(),"删除成功",Toast.LENGTH_SHORT).show();
+                        }
+                    }).
+                    setNegativeButton("取消",null).show();
+            }
+        });
 
     }
+
+
 
     public void btu_quxiao(View view){
         finish();
